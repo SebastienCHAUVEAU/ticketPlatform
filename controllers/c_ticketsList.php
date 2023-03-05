@@ -12,7 +12,10 @@ require_once($path);
 
 //____________________CONTROLLER PART
 session_start();
-
+if(!isset($_SESSION["connecter"])){
+    header("location:login");
+    exit();
+}
 $openedTicketInfos = getOpenedTicketInfos();
 $closedTicketInfos = getClosedTicketInfos();
 

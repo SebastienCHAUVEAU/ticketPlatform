@@ -30,8 +30,10 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $connexionCheck = checkConnexion($username, $password);
 
     if($connexionCheck == false){
+        $_SESSION["connecter"] = "no";
         $errorConnexionMessage = '<p class="errorMessage">Identifiants inconnus veuillez essayer de nouveau.</p>';
     }else{
+        $_SESSION["connecter"] = "yes";
         $_SESSION["idUser"] = $connexionCheck["user_id"];
         header("location:dashboard");
     }

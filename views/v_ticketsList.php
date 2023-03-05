@@ -48,7 +48,7 @@ require_once($path);
             echo "<td>" . date('d-m-Y', strtotime($ticketInfo['ticket_updateDate'])) . "</td>";
             echo "<td>" . date('d-m-Y', strtotime($ticketInfo['ticket_openDate'])) . "</td>";
             echo '<td>';
-            echo '<a href="details_ticket/' . $ticketInfo['ticket_id'] . '"><button type="button" class="btnGeneral warningButton">Modifier</button></a>';
+            echo '<a href="tickets/' . $ticketInfo['ticket_id'] . '"><button type="button" class="btnGeneral warningButton">Modifier</button></a>';
             echo '</td>';
             echo "</tr>";
     
@@ -83,7 +83,7 @@ require_once($path);
             echo "<td>" . date('d-m-Y', strtotime($ticketInfo['ticket_updateDate'])) . "</td>";
             echo "<td>" . date('d-m-Y', strtotime($ticketInfo['ticket_openDate'])) . "</td>";
             echo '<td>';
-            echo '<a href="details_ticket/' . $ticketInfo['ticket_id'] . '"><button type="button" class="btnGeneral warningButton">Modifier</button></a>';
+            echo '<a href="tickets/' . $ticketInfo['ticket_id'] . '"><button type="button" class="btnGeneral warningButton">Modifier</button></a>';
             echo '</td>';
             echo " </tr>";
         }

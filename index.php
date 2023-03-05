@@ -14,8 +14,18 @@ favicons
 nav selected
 revoir style du nav
 
-*/
+insert en deux fois une société 
 
+
+dashboard : bienvenue untel, vous avez actuellement tant de ticket ouverts (tout si isAdmin)
+tickets : modifier mise en forme, ajout commentaire, retour sur tickets?, masquer fermés 
+sociétés : double ajout ?? , comment supprimer ou select supprimer, 
+Comptes : listing, modifier, créer, supprimer 
+logout : voir destruction variables session session_start(); session_destroy(); header("location:login.php");
+
+GESTION DES ERREURS
+
+*/
 
 
 
@@ -29,7 +39,7 @@ echo "</pre>";
 */
 //_____HOME AND DEFAULT
 
-if ($explodedUrl[1] == '') {
+if ($explodedUrl[1] == '' || $explodedUrl[1] == 'login') {
 
     if (DIRECTORY_SEPARATOR === '/') {
         $path = dirname(__FILE__) . "/controllers/c_login.php";
@@ -49,13 +59,22 @@ if ($explodedUrl[1] == '') {
 
     require_once($path);
 } else if ($explodedUrl[1] == 'tickets') {
-    if (DIRECTORY_SEPARATOR === '/') {
-        $path = dirname(__FILE__) . "/controllers/c_ticketsList.php";
-    } else {
-        $path = dirname(__FILE__) . "\\controllers\\c_ticketsList.php";
+    if (!isset($explodedUrl[2])) {
+        if (DIRECTORY_SEPARATOR === '/') {
+            $path = dirname(__FILE__) . "/controllers/c_ticketsList.php";
+        } else {
+            $path = dirname(__FILE__) . "\\controllers\\c_ticketsList.php";
+        }
+        require_once($path);
+    } else if (isset($explodedUrl[2])) {
+        $idTicket = htmlspecialchars($explodedUrl[2]);
+        if (DIRECTORY_SEPARATOR === '/') {
+            $path = dirname(__FILE__) . "/controllers/c_ticketDetails.php";
+        } else {
+            $path = dirname(__FILE__) . "\\controllers\\c_ticketDetails.php";
+        }
+        require_once($path);
     }
-
-    require_once($path);
 } else if ($explodedUrl[1] == 'ticket_creation') {
     if (DIRECTORY_SEPARATOR === '/') {
         $path = dirname(__FILE__) . "/controllers/c_ticketCreation.php";
@@ -72,14 +91,7 @@ if ($explodedUrl[1] == '') {
     }
 
     require_once($path);
-} else if ($explodedUrl[1] == 'tenant_creation') {
-    if (DIRECTORY_SEPARATOR === '/') {
-        $path = dirname(__FILE__) . "/controllers/c_tenantCreation.php";
-    } else {
-        $path = dirname(__FILE__) . "\\controllers\\c_tenantCreation.php";
-    }
 
-    require_once($path);
 } else if ($explodedUrl[1] == 'accounts') {
     if (DIRECTORY_SEPARATOR === '/') {
         $path = dirname(__FILE__) . "/controllers/c_accountsList.php";
@@ -104,6 +116,8 @@ if ($explodedUrl[1] == '') {
     }
 
     require_once($path);
-} else {
+} else if ($explodedUrl[1] == 'error'){
+    echo "404 error page";
+}else {
     echo "404 error page";
 }
