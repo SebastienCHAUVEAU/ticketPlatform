@@ -1,5 +1,5 @@
-<?php 
-function checkConnexion($usernameUser, $passwordUser){
+<?php
+function getTotalOpenedTickets(){
     $servername  = "localhost";
     $username = "root";
     $password = "";
@@ -10,8 +10,8 @@ function checkConnexion($usernameUser, $passwordUser){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
 
-        $stmt = $conn->prepare("SELECT user_id FROM users WHERE user_email=:usernameUser AND user_password=:passwordUser");
-        $stmt->execute(['usernameUser' => $usernameUser, 'passwordUser' => $passwordUser]);
+        $stmt = $conn->prepare("SELECT COUNT(ticket_id) FROM tickets WHERE ticket_isActive=1");
+        $stmt->execute();
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;
