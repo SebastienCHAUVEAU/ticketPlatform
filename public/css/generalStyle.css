@@ -13,6 +13,7 @@
 }
 
 .errorMessage {
+    font-weight: bold;
     color: red;
 }
 

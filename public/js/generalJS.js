@@ -42,12 +42,21 @@ if (usernameField !== null && passwordField !== null && buttonConnexion !== null
 }
 
 /***** DELETE USER PART */
-const deleteFirstBtn = getElementById("deleteUserFirstButton");
-const divDeleteUser = getElementById("deleteUSerContainer");
+const deleteFirstBtn = document.getElementById("deleteUserFirstButton");
+const divDeleteUser = document.getElementById("deleteUSerContainer");
+const returnDeleteUserButton = document.getElementById("deleteUserReturnButton");
 
 if(deleteFirstBtn !== null){
     deleteFirstBtn.addEventListener("click",function(e){
+        deleteFirstBtn.classList.add("hideElement");
         divDeleteUser.classList.remove("hideElement");
     });
+
+    returnDeleteUserButton.addEventListener("click",function(e){
+        deleteFirstBtn.classList.remove("hideElement");
+        divDeleteUser.classList.add("hideElement");
+    })
+
+
 }
 

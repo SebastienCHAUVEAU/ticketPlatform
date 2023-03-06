@@ -40,8 +40,10 @@ require_once($path);
             echo "<td>" . $user['user_firstname'] . ' ' . $user['user_lastname'] . "</td>";
             echo "<td>" . $user['user_email'] . "</td>";
             echo "<td>" . $user['user_phone_number'] . "</td>";
-            echo "<td>" . $user['user_isAdmin'] . "</td>";
-            echo "<td>" . $user['user_society'] . "</td>";
+            echo "<td>" ;
+            if($user['user_isAdmin'] === 1){echo "Oui";}else{echo "Non";} 
+            echo "</td>";
+            echo "<td>" . $user['tenant'] . "</td>";
             echo '<td><form action="account_modification" method="post"><input type="hidden" name="id" value="' . $user['user_id'] . '"><button class="btnGeneral warningButton" type="submit">Modifier</button></form></td>';
             echo "</tr>";
         }?>

@@ -142,3 +142,59 @@ function insertNewTicketComment($ticketId, $authorId, $commentContent)
 
     $conn = null;
 }
+
+function deleteTicket($idTicket)
+{
+    $servername  = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "u206479934_gestiontickets";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        $stmt = $conn->prepare("DELETE FROM tickets WHERE ticket_id=:id");
+        $stmt->execute(["id" => $idTicket]);
+
+        $conn->commit();
+
+        return true;
+    } catch (PDOException $e) {
+        $conn->rollback();
+        $errorToDisplay = "Error " . $e->getMessage();
+        //echo $errorToDisplay;
+        return false;
+    };
+
+    $conn = null;
+}
+
+function deleteTicketComments($idTicket)
+{
+    $servername  = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "u206479934_gestiontickets";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        $stmt = $conn->prepare("DELETE FROM ticket_comments WHERE comment_ticket_id=:id");
+        $stmt->execute(["id" => $idTicket]);
+
+        $conn->commit();
+
+        return true;
+    } catch (PDOException $e) {
+        $conn->rollback();
+        $errorToDisplay = "Error " . $e->getMessage();
+        //echo $errorToDisplay;
+        return false;
+    };
+
+    $conn = null;
+}

@@ -49,7 +49,14 @@ if ($allTicketComments === false) {
 //_DISPLAY
 $allCategories = getAllCategories();
 
-
+//_DELETE QUERY 
+if(isset($_POST['deleteTicketNumber'])){
+    $idTicketToDelete = htmlentities($_POST['deleteTicketNumber']);
+    
+    $deleteTicket = deleteTicket($idTicketToDelete);
+    $deleteTicketComments = deleteTicketComments($idTicketToDelete);
+    header("location:tickets");
+}
 
 
 //_UPDATE QUERY

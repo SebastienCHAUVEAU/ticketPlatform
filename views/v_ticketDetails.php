@@ -27,8 +27,8 @@ require_once($path);
 <div id="deleteUSerContainer" class="hideElement">
     <form action="" method="post">
         <input type="hidden" name="deleteTicketNumber" value="<?= $idTicket ?>">
-        <p><strong>Attention, si vous cliquez sur ce bouton il n'y aura pas de retour en arrière.</strong></p>
-        <button type="button" class="btnGeneral2 warningButton">Revenir en arrière</button>
+        <p class="errorMessage">Attention, si vous cliquez sur ce bouton il n'y aura pas de retour en arrière.</p>
+        <button type="button" id="deleteUserReturnButton" class="btnGeneral2 warningButton">Revenir en arrière</button>
         <button type="submit" class="btnGeneral2 dangerButton">Suppression définitive</button>
     </form>
 </div>
@@ -38,6 +38,7 @@ require_once($path);
 <p>Auteur : <?= htmlspecialchars($allTicketDetails["firstname"]) . ' ' . htmlspecialchars($allTicketDetails["lastname"]) ?></p>
 <p>Société : <?= htmlspecialchars($allTicketDetails["tenantname"]) ?></p>
 <p>Créé le : <?= htmlspecialchars(date('d-m-Y', strtotime($allTicketDetails["ticket_openDate"]))) ?></p>
+<p>Objet : <?= htmlspecialchars($allTicketDetails["ticket_title"]) ?></p>
 <p>Description : <?= htmlspecialchars($allTicketDetails["ticket_content"]) ?></p>
 
 <h2>Modification</h2>

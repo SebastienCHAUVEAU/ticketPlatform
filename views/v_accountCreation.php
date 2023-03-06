@@ -31,7 +31,7 @@ require_once($path);
     <input class="inputForm" type="text" id="useremail" name="useremail" placeholder="Veuillez entrer l'adresse email" required >
 
     <label class="labelForm" for="userphone">Numéro de téléphone</label>
-    <input class="inputForm" type="number" id="userphone" name="userphone" placeholder="Veuillez entrer le numéro de téléphone" required>
+    <input class="inputForm" type="text" pattern="[0-9]*" id="userphone" name="userphone" placeholder="Veuillez entrer le numéro de téléphone" required>
 
     <label class="labelForm" for="userpassword">Mot de passe</label>
     <input class="inputForm" type="password" id="userpassword" name="userpassword" placeholder="Veuillez entrer le mot de passe" required>
