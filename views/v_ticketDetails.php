@@ -21,6 +21,19 @@ require_once($path);
 
 
 <h1>Ticket # <?= $idTicket ?></h1>
+
+<button type="button"id="deleteUserFirstButton" class="btnGeneral2 dangerButton">Supprimer le ticket</button>
+
+<div id="deleteUSerContainer" class="hideElement">
+    <form action="" method="post">
+        <input type="hidden" name="deleteTicketNumber" value="<?= $idTicket ?>">
+        <p><strong>Attention, si vous cliquez sur ce bouton il n'y aura pas de retour en arrière.</strong></p>
+        <button type="button" class="btnGeneral2 warningButton">Revenir en arrière</button>
+        <button type="submit" class="btnGeneral2 dangerButton">Suppression définitive</button>
+    </form>
+</div>
+
+
 <h2>Détails</h2>
 <p>Auteur : <?= htmlspecialchars($allTicketDetails["firstname"]) . ' ' . htmlspecialchars($allTicketDetails["lastname"]) ?></p>
 <p>Société : <?= htmlspecialchars($allTicketDetails["tenantname"]) ?></p>

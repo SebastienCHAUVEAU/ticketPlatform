@@ -1,18 +1,22 @@
 <?php
 /*
-o dashboard : vous avez actuellement tant de ticket ouverts (tout si isAdmin)
-o ticketList : que les nôtres 
 
 tickets : modifier mise en forme, retour sur tickets?, masquer fermés
 ticket details : encodage des caractères
-Comptes : listing, modifier, créer, supprimer, HASHER LES MDP !!!  
-ENCODAGE TABLE : commentaires ; catégories
+
+Suppression ticket
 ROUTAGE DOUBLE ...
+ENCODAGE TABLE : commentaires ; catégories
 RESPONSIVE
+
+RESOLUTION DE NOM SUR LISTE USER ET IS ADMIN EN OUI OU NON 
+PHONE NUMBER EN STRING CAR RETIRE LE ZERO OU TEL
+VERIFICATION SI CHAMPS VIDES
 GESTION DES ERREURS
+MODIF ALL CONNEXIONS PDO BDD TO LOCALHOST
+TOAST NOTIFICATION ??
 
 */
-
 
 
 //__________SIMPLE ROUTER FOR OUR PAGES
@@ -91,6 +95,14 @@ if ($explodedUrl[1] == '' || $explodedUrl[1] == 'login') {
         $path = dirname(__FILE__) . "/controllers/c_accountCreation.php";
     } else {
         $path = dirname(__FILE__) . "\\controllers\\c_accountCreation.php";
+    }
+
+    require_once($path);
+} else if ($explodedUrl[1] == 'account_modification') {
+    if (DIRECTORY_SEPARATOR === '/') {
+        $path = dirname(__FILE__) . "/controllers/c_accountModification.php";
+    } else {
+        $path = dirname(__FILE__) . "\\controllers\\c_accountModification.php";
     }
 
     require_once($path);

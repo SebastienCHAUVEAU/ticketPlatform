@@ -38,7 +38,7 @@ function getAllTicketComments($ticketID){
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
 
-        $stmt = $conn->prepare("SELECT comment_id, comment_ticket_id, comment_author_id, comment_content, comment_date, u.user_firstname AS firstname, u.user_lastname AS lastname FROM ticket_comments AS t INNER JOIN users AS u ON u.user_id =  t.comment_author_id WHERE comment_ticket_id=:idTicket ORDER BY comment_date");
+        $stmt = $conn->prepare("SELECT comment_id, comment_ticket_id, comment_author_id, comment_content, comment_date, u.user_firstname AS firstname, u.user_lastname AS lastname FROM ticket_comments AS t INNER JOIN users AS u ON u.user_id =  t.comment_author_id WHERE comment_ticket_id=:idTicket ORDER BY comment_date DESC");
         $stmt->execute(['idTicket' => $ticketID]);
 
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);

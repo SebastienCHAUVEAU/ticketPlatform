@@ -24,6 +24,7 @@ $isActiveTickets = '';
 $isActiveSocieties = '';
 $isActiveAccounts = 'class="active"';
 
+$allUsersInformations = getAllUser();
 
 
 //__________CALL THE VIEW

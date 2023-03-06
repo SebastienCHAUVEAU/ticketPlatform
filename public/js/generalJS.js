@@ -1,9 +1,9 @@
 
 /******* LOGIN PART **/ 
-let usernameField = document.getElementById("username");
-let passwordField = document.getElementById("password");
-let buttonConnexion = document.getElementById("divConnexionButton");
-let errorLoginMessage = document.getElementById("errorLoginMessage");
+const usernameField = document.getElementById("username");
+const passwordField = document.getElementById("password");
+const buttonConnexion = document.getElementById("divConnexionButton");
+const errorLoginMessage = document.getElementById("errorLoginMessage");
 
 if (usernameField !== null && passwordField !== null && buttonConnexion !== null) {
     if (usernameField.value == "" || passwordField.value == "") {
@@ -41,4 +41,13 @@ if (usernameField !== null && passwordField !== null && buttonConnexion !== null
     });
 }
 
+/***** DELETE USER PART */
+const deleteFirstBtn = getElementById("deleteUserFirstButton");
+const divDeleteUser = getElementById("deleteUSerContainer");
+
+if(deleteFirstBtn !== null){
+    deleteFirstBtn.addEventListener("click",function(e){
+        divDeleteUser.classList.remove("hideElement");
+    });
+}
 
