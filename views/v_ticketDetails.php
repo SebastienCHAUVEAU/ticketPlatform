@@ -33,7 +33,8 @@ require_once($path);
 
 <form action="" method="post">
 <label class="labelForm" for="comment">Ajouter un nouveau commentaire</label>
-<input class="inputForm" type="text" id="comment" name="comment">
+<input class="inputForm" type="text" id="comment" name="comment"/>
+<input name="ticketNumber" type="hidden" value="<?=$idTicket?>"/>
 <button type="submit" class="btnGeneral2 successButton">Ajouter</button>
 </form>
 

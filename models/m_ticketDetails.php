@@ -55,7 +55,7 @@ function getAllTicketComments($ticketID){
 
 }
 
-function insertNewTicketComment($title, $content, $author, $tenant)
+function insertNewTicketComment($ticketId, $authorId, $commentContent)
 {
     $servername  = "localhost";
     $username = "root";
@@ -67,8 +67,8 @@ function insertNewTicketComment($title, $content, $author, $tenant)
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
 
-        $stmt = $conn->prepare("INSERT INTO tickets (ticket_title,ticket_content,ticket_author,ticket_tenant) VALUES (:title,:content,:author,:tenant)");
-        $stmt->execute(["title" => $title, "content" => $content, "author" => $author, "tenant" => $tenant]);
+        $stmt = $conn->prepare("INSERT INTO ticket_comments (comment_ticket_id,comment_author_id,comment_content) VALUES (:ticket,:author,:content)");
+        $stmt->execute(["ticket" => $ticketId, "author" => $authorId, "content" => $commentContent]);
 
         $insertedIdToReturn = $conn->lastInsertId();
         $conn->commit();

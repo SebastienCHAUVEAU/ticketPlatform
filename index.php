@@ -17,12 +17,17 @@ revoir style du nav
 insert en deux fois une société 
 
 
-dashboard : bienvenue untel, vous avez actuellement tant de ticket ouverts (tout si isAdmin)
-tickets : modifier mise en forme, ajout commentaire, retour sur tickets?, masquer fermés 
-sociétés : double ajout ?? , comment supprimer ou select supprimer, 
-Comptes : listing, modifier, créer, supprimer 
-logout : voir destruction variables session session_start(); session_destroy(); header("location:login.php");
+o dashboard : bienvenue untel, vous avez actuellement tant de ticket ouverts (tout si isAdmin)
+tickets : modifier mise en forme, ajout commentaire, retour sur tickets?, masquer fermés
+ticket details : encodage des caractères 
+o sociétés : double ajout ?? 
+Comptes : listing, modifier, créer, supprimer, HASHER LES MDP !!!  
+o logout : en icône à droite voir destruction variables 
+o nav : activation "active", revoir les styles
+o header : title des pages en variable 
 
+
+RESPONSIVE
 GESTION DES ERREURS
 
 */

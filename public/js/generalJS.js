@@ -1,5 +1,5 @@
 
-
+/******* LOGIN PART **/ 
 let usernameField = document.getElementById("username");
 let passwordField = document.getElementById("password");
 let buttonConnexion = document.getElementById("divConnexionButton");
@@ -40,3 +40,5 @@ if (usernameField !== null && passwordField !== null && buttonConnexion !== null
         }
     });
 }
+
+

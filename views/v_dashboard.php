@@ -18,11 +18,19 @@ if (DIRECTORY_SEPARATOR === '/') {
 require_once($path);
 ?>
 
-<table>
+<h1>Bienvenue <?= $userIdentity["user_firstname"] ?> <?= $userIdentity["user_lastname"] ?></h1>
+
+<table class="table">
+    <thead>
         <tr>
-            <td>Nombre de tickets ouverts</td>
+            <th>Nombre total de tickets ouverts</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
             <td><?= $totalCurrentOpenedTickets["COUNT(ticket_id)"] ?></td>
         </tr>
+    </tbody>
 </table>
 
 

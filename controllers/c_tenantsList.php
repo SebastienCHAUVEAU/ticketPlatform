@@ -16,6 +16,14 @@ if(!isset($_SESSION["connecter"])){
     header("location:login");
     exit();
 }
+$titlePage = "Liste des sociétés";
+
+$isActiveDashboard = '';
+$isActiveTickets = '';
+$isActiveSocieties = 'class="active"';
+$isActiveAccounts = '';
+
+
 
 $tenantNames = getAllTenantNames();
 
@@ -27,6 +35,7 @@ foreach($tenantNames as $name){
 
 if(isset($_POST["tenantName"])){
     $insetTenant = insertNewTenant(htmlentities($_POST["tenantName"]));
+    header("location:tenants");
 }
 
 //__________CALL THE VIEW

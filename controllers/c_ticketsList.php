@@ -16,6 +16,14 @@ if(!isset($_SESSION["connecter"])){
     header("location:login");
     exit();
 }
+
+$titlePage = "Liste des tickets";
+
+$isActiveDashboard = '';
+$isActiveTickets = 'class="active"';
+$isActiveSocieties = '';
+$isActiveAccounts = '';
+
 $openedTicketInfos = getOpenedTicketInfos();
 $closedTicketInfos = getClosedTicketInfos();
 

@@ -17,6 +17,13 @@ if(!isset($_SESSION["connecter"])){
     exit();
 }
 
+$titlePage = "Création de ticket";
+
+$isActiveDashboard = '';
+$isActiveTickets = 'class="active"';
+$isActiveSocieties = '';
+$isActiveAccounts = '';
+
 $errorConnexionMessage = "";
 
 if(isset($_POST['object']) && isset($_POST['description'])){

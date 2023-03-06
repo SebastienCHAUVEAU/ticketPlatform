@@ -19,7 +19,7 @@ var_dump($explodedUrl[1] == '');
 var_dump(isset($_SESSION["idUser"]));
 var_dump(session_id());
 echo "</pre>";*/
-
+$titlePage = "Connexion";
 
 $errorConnexionMessage = "";
 

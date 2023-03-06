@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/public/css/generalStyle.css">
     <link rel="icon" type="image/png" href="/public/images/support-ticket-minilogo.png" />
     <script defer src="/public/js/generalJS.js"></script>
-    <title>Connexion</title>
+    <title><?=$titlePage?></title>
 </head>
 
 <body>

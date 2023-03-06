@@ -17,6 +17,12 @@ if(!isset($_SESSION["connecter"])){
     exit();
 }
 
+$titlePage = "Liste des comptes";
+
+$isActiveDashboard = '';
+$isActiveTickets = '';
+$isActiveSocieties = '';
+$isActiveAccounts = 'class="active"';
 
 
 

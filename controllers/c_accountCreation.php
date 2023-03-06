@@ -17,7 +17,12 @@ if(!isset($_SESSION["connecter"])){
     exit();
 }
 
+$titlePage = "Création de compte";
 
+$isActiveDashboard = '';
+$isActiveTickets = '';
+$isActiveSocieties = '';
+$isActiveAccounts = 'class="active"';
 
 
 //__________CALL THE VIEW

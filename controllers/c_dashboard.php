@@ -16,9 +16,16 @@ if(!isset($_SESSION["connecter"])){
     header("location:login");
     exit();
 }
+
+$titlePage = "Dashboard";
+
+$isActiveDashboard = 'class="active"';
+$isActiveTickets = '';
+$isActiveSocieties = '';
+$isActiveAccounts = '';
+
 $totalCurrentOpenedTickets = getTotalOpenedTickets();
-
-
+$userIdentity = getNamesConnectedUSer($_SESSION['idUser']);
 
 
 

@@ -23,7 +23,7 @@ require_once($path);
 <form action="" method="post">
     <label class="labelForm" for="tenantName">Nom de la société à ajouter</label>
     <input class="inputForm" type="text" id="tenantName" name="tenantName" />
-    <button type="submit" class="btnGeneral2 successButton">Ajouter</button>
+    <button type="s ubmit" class="btnGeneral2 successButton">Ajouter</button>
 </form>
 
 <h2>Liste</h2>
@@ -31,19 +31,14 @@ require_once($path);
     <thead>
         <tr>
             <th>Noms</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach($displayTenantNames as $name){
             echo "<tr>";
             echo "<td>" . $name . "</td>";
-            echo '<td><button type="button" class="btnGeneral2 dangerButton">Supprimer</button>';
             echo "</tr>";
         } ?>
-        <tr>
-            <td></td>
-        </tr>
     </tbody>
 </table>
 
