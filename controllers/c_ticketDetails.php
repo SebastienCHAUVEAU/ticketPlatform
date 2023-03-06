@@ -33,6 +33,7 @@ if ($allTicketDetails === false) {
     exit();
 }
 
+
 $allTicketComments =  getAllTicketComments($idTicket);
 
 if ($allTicketComments === false) {
@@ -40,10 +41,28 @@ if ($allTicketComments === false) {
 } else {
     $ticketCommentsToDisplay = "";
     foreach ($allTicketComments as $comment) {
-        $ticketCommentsToDisplay =  $ticketCommentsToDisplay . "<p>" . date('d-m-Y à H:i', strtotime($comment["comment_date"])) . " : " . $comment['comment_content'];
+        $ticketCommentsToDisplay =  $ticketCommentsToDisplay . "<p>" . date('d-m-Y à H:i', strtotime($comment["comment_date"])) . " (" . $comment['firstname'] . ' ' . $comment['lastname'] . ")" .  " : " . $comment['comment_content'];
     }
 }
 
+//_____MODIFY TICKET 
+//_DISPLAY
+$allCategories = getAllCategories();
+
+
+
+
+//_UPDATE QUERY
+if(isset($_POST['ticketStatut'])){
+    $isOpen = $_POST['ticketStatut'];
+    $categoryTicket = $_POST['ticketCategory'];
+    $ticketNumber = $_POST["ticketNumber"];
+
+    $updateTicket = setUpdateTicket($isOpen, $categoryTicket,$ticketNumber);
+
+    header("location:$ticketNumber");
+
+}
 //_____ADD COMMENT
 
 if (isset($_POST["comment"])) {

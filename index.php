@@ -1,32 +1,13 @@
 <?php
 /*
-Il faut que la session commence
-Il faut regarder si la variable isConnected est isset(); 
-Sinon il faut mettre à 0 
+o dashboard : vous avez actuellement tant de ticket ouverts (tout si isAdmin)
+o ticketList : que les nôtres 
 
-ticket list (open / close)
-ticket details (with comments)
-login page 
-dashboard = ticket details 
- 
-title des pages
-favicons 
-nav selected
-revoir style du nav
-
-insert en deux fois une société 
-
-
-o dashboard : bienvenue untel, vous avez actuellement tant de ticket ouverts (tout si isAdmin)
-tickets : modifier mise en forme, ajout commentaire, retour sur tickets?, masquer fermés
-ticket details : encodage des caractères 
-o sociétés : double ajout ?? 
+tickets : modifier mise en forme, retour sur tickets?, masquer fermés
+ticket details : encodage des caractères
 Comptes : listing, modifier, créer, supprimer, HASHER LES MDP !!!  
-o logout : en icône à droite voir destruction variables 
-o nav : activation "active", revoir les styles
-o header : title des pages en variable 
-
-
+ENCODAGE TABLE : commentaires ; catégories
+ROUTAGE DOUBLE ...
 RESPONSIVE
 GESTION DES ERREURS
 

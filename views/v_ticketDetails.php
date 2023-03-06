@@ -20,22 +20,55 @@ require_once($path);
 
 
 
-<h1>Ticket # <?=$idTicket?></h1>
+<h1>Ticket # <?= $idTicket ?></h1>
 <h2>Détails</h2>
-<p>Auteur : <?=htmlspecialchars($allTicketDetails["ticket_author"])?></p>
-<p>Société : <?=htmlspecialchars($allTicketDetails["ticket_tenant"])?></p>
-<p>Créé le : <?=htmlspecialchars(date('d-m-Y', strtotime($allTicketDetails["ticket_openDate"])))?></p> 
-<p>Description : <?=htmlspecialchars($allTicketDetails["ticket_content"])?></p>
+<p>Auteur : <?= htmlspecialchars($allTicketDetails["firstname"]) . ' ' . htmlspecialchars($allTicketDetails["lastname"]) ?></p>
+<p>Société : <?= htmlspecialchars($allTicketDetails["tenantname"]) ?></p>
+<p>Créé le : <?= htmlspecialchars(date('d-m-Y', strtotime($allTicketDetails["ticket_openDate"]))) ?></p>
+<p>Description : <?= htmlspecialchars($allTicketDetails["ticket_content"]) ?></p>
+
+<h2>Modification</h2>
+<form action="" method="post">
+    <label class="labelForm" for="ticketStatut">Statut du ticket</label>
+    <select class="inputForm" name="ticketStatut" id="ticketStatut">
+        <option <?php if ($allTicketDetails["ticket_isActive"] === 1) {
+                    echo "selected";
+                } ?> value="1">Ouvert</option>
+        <option <?php if ($allTicketDetails["ticket_isActive"] === 0) {
+                    echo "selected";
+                } ?> value="0">Fermé</option>
+    </select>
+
+    <label class="labelForm" for="ticketCategory">Catégorie du ticket</label>
+    <select class="inputForm" name="ticketCategory" id="ticketCategory">
+        <?php
+        foreach ($allCategories as $category) {
+            $isSelectedCategoryOption = " ";
+            if ($category["category_id"] === $allTicketDetails["ticket_category"]) {
+                $isSelectedCategoryOption = "selected";
+            }
+            echo "<option $isSelectedCategoryOption value=";
+            echo  $category["category_id"] . '>' . $category["category_name"];
+            echo "</option>";
+        }
+
+        ?>
+    </select>
+
+    <input name="ticketNumber" type="hidden" value="<?= $idTicket ?>" />
+
+    <button type="submit" class="btnGeneral2 successButton">Modifier</button>
+</form>
 
 <h2>Commentaires</h2>
-<?=$ticketCommentsToDisplay?>
+<?= $ticketCommentsToDisplay ?>
 
 
 <form action="" method="post">
-<label class="labelForm" for="comment">Ajouter un nouveau commentaire</label>
-<input class="inputForm" type="text" id="comment" name="comment"/>
-<input name="ticketNumber" type="hidden" value="<?=$idTicket?>"/>
-<button type="submit" class="btnGeneral2 successButton">Ajouter</button>
+    <label class="labelForm" for="comment">Ajouter un nouveau commentaire</label>
+    <input class="inputForm" type="text" id="comment" name="comment" />
+    <input name="ticketNumber" type="hidden" value="<?= $idTicket ?>" />
+    <button type="submit" class="btnGeneral2 successButton">Ajouter</button>
 </form>
 
 
