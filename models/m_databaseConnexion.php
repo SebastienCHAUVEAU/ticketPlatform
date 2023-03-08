@@ -1,35 +1,46 @@
 <?php
 
-class connexionPDO
-{
-    private $servername  = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbname = "u206479934_gestiontickets";
+class PdoConnexion {
+	private $login = 'root';
+	private $pass = '';
+    private $host = 'localhost';
+    private $db = 'u206479934_gestiontickets';
+    
 
-    public function makeConnexion()
-    {
-        try {
-            $conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->username, $this->password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	public function connexion(){
+		try
+		{
+	        $bdd = new PDO('mysql:host=' . $this->host . ';dbname='. $this->db .';charset=utf8mb4', $this->login,$this->pass);
+			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			return $bdd;
 
-            return $conn;
-        } catch (PDOException $e) {
-            $conn->rollback();
+		}
+		catch (PDOException $e)
+		{
             $errorToDisplay = "Error " . $e->getMessage();
             //echo $errorToDisplay;
-        };
-    }
+            return false;
+		}
+	}
 }
 
 
 
-$DB = new connexionPDO;
+function pdoConnexion()
+{
+    $servername  = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "u206479934_gestiontickets";
 
-$db = $DB->makeConnexion();
-
-$q = $db->prepare("SELECT COUNT(ticket_id) FROM tickets WHERE ticket_isActive=1");
-$q->execute();
-$data = $q->fetch(PDO::FETCH_ASSOC);
-
-var_dump($data);
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    } catch (PDOException $e) {
+        $conn->rollback();
+        $errorToDisplay = "Error " . $e->getMessage();
+        //echo $errorToDisplay;
+        return false;
+    };
+}

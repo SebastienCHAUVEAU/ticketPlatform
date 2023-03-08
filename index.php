@@ -1,26 +1,4 @@
 <?php
-/*
-
-tickets : modifier mise en forme, retour sur tickets?, masquer fermés
-
-Transactions : rechercher le pq / justification 
-Connexion dans toutes les pages : importer ou namespace 
-accessibilité notamment image 
-Faire apparaître foreign keys 
-id / table_id / fk_atable_btable
-
-ROUTAGE DOUBLE ...
-ENCODAGE TABLE : commentaires ; catégories
-RESPONSIVE
-
-VERIFICATION SI CHAMPS VIDES
-GESTION DES ERREURS
-CHECK SUR L'ID DELETE AVEC UN SELECT : bon user, bon ticket
-MODIF ALL CONNEXIONS PDO BDD TO LOCALHOST
-TOAST NOTIFICATION ??
-
-*/
-
 
 //__________SIMPLE ROUTER FOR OUR PAGES
 

@@ -23,32 +23,39 @@ require_once($path);
 <a href="account_creation"><button type="button" class="btnGeneral2 successButton">Créer un nouvel utilisateur</button></a>
 
 <h2>Liste des comptes</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nom de l'utilisateur</th>
-            <th>Adresse email</th>
-            <th>Numéro de téléphone</th>
-            <th>Administrateur</th>
-            <th>Société</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($allUsersInformations as $user){
-            echo "<tr>";
-            echo "<td>" . $user['user_firstname'] . ' ' . $user['user_lastname'] . "</td>";
-            echo "<td>" . $user['user_email'] . "</td>";
-            echo "<td>" . $user['user_phone_number'] . "</td>";
-            echo "<td>" ;
-            if($user['user_isAdmin'] === 1){echo "Oui";}else{echo "Non";} 
-            echo "</td>";
-            echo "<td>" . $user['tenant'] . "</td>";
-            echo '<td><form action="account_modification" method="post"><input type="hidden" name="id" value="' . $user['user_id'] . '"><button class="btnGeneral warningButton" type="submit">Modifier</button></form></td>';
-            echo "</tr>";
-        }?>
-    </tbody>
-</table>
+<div class="responsiveTable">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom de l'utilisateur</th>
+                <th>Adresse email</th>
+                <th>Numéro de téléphone</th>
+                <th>Administrateur</th>
+                <th>Société</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($allUsersInformations as $user) {
+                echo "<tr>";
+                echo "<td>" . $user['user_firstname'] . ' ' . $user['user_lastname'] . "</td>";
+                echo "<td>" . $user['user_email'] . "</td>";
+                echo "<td>" . $user['user_phone_number'] . "</td>";
+                echo "<td>";
+                if ($user['user_isAdmin'] === 1) {
+                    echo "Oui";
+                } else {
+                    echo "Non";
+                }
+                echo "</td>";
+                echo "<td>" . $user['tenant'] . "</td>";
+                echo '<td><form action="account_modification" method="post"><input type="hidden" name="id" value="' . $user['user_id'] . '"><button class="btnGeneral warningButton" type="submit">Modifier</button></form></td>';
+                echo "</tr>";
+            } ?>
+        </tbody>
+    </table>
+</div>
+
 
 
 <?php

@@ -59,6 +59,15 @@
     background-color: #04AA6D;
     color: white;
   }
+
+
+  @media only screen and (max-width: 768px) {
+    
+    .topnav {
+      display:flex;
+      flex-direction: column;
+    }
+  }
   
 /****************Form specific*/
 
@@ -158,4 +167,8 @@
     text-align: left;
     background-color: #04AA6D;
     color: white;
+  }
+
+  .responsiveTable {
+    overflow-x:auto;
   }

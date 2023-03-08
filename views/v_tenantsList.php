@@ -22,7 +22,7 @@ require_once($path);
 <h2>Ajouter une nouvelle société</h2>
 <form action="" method="post">
     <label class="labelForm" for="tenantName">Nom de la société à ajouter</label>
-    <input class="inputForm" type="text" id="tenantName" name="tenantName" required/>
+    <input class="inputForm" type="text" id="tenantName" name="tenantName" required />
 
     <?= $errorMessageNewTenant ?>
 
@@ -30,20 +30,23 @@ require_once($path);
 </form>
 
 <h2>Liste</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Noms</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach($displayTenantNames as $name){
-            echo "<tr>";
-            echo "<td>" . $name . "</td>";
-            echo "</tr>";
-        } ?>
-    </tbody>
-</table>
+<div class="responsiveTable">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Noms</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($displayTenantNames as $name) {
+                echo "<tr>";
+                echo "<td>" . $name . "</td>";
+                echo "</tr>";
+            } ?>
+        </tbody>
+    </table>
+</div>
+
 
 
 
