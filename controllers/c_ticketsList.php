@@ -24,7 +24,7 @@ $isActiveTickets = 'class="active"';
 $isActiveSocieties = '';
 $isActiveAccounts = '';
 
-$openedTicketInfos = getOpenedTicketInfos();
+$openedTicketInfos = getOpenedTicketInfosObject();
 $closedTicketInfos = getClosedTicketInfos();
 
 

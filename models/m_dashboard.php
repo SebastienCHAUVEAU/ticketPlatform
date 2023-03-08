@@ -1,4 +1,7 @@
 <?php
+
+
+
 function getTotalOpenedTickets(){
     $servername  = "localhost";
     $username = "root";
@@ -8,7 +11,6 @@ function getTotalOpenedTickets(){
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction();
 
         $stmt = $conn->prepare("SELECT COUNT(ticket_id) FROM tickets WHERE ticket_isActive=1");
         $stmt->execute();
@@ -37,7 +39,6 @@ function getNamesConnectedUSer($id){
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction();
 
         $stmt = $conn->prepare("SELECT user_firstname, user_lastname FROM users WHERE user_id = :id;");
         $stmt->execute(['id' => $id]);
