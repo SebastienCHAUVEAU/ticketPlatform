@@ -12,7 +12,7 @@ require_once($path);
 <div class="loginContainer">
 
     <div class="centeringElement">
-        <img src="/public/images/helpdesk-logo.png" height="154.5" width="275" />
+        <img src="/public/images/helpdesk-logo.png" height="154.5" width="275" alt="helpdesk_logo" />
     </div>
 
     <div class="centeringElement">

@@ -41,7 +41,7 @@ if ($allTicketComments === false) {
 } else {
     $ticketCommentsToDisplay = "";
     foreach ($allTicketComments as $comment) {
-        $ticketCommentsToDisplay =  $ticketCommentsToDisplay . "<p>" . date('d-m-Y à H:i', strtotime($comment["comment_date"])) . " (" . $comment['firstname'] . ' ' . $comment['lastname'] . ")" .  " : " . $comment['comment_content'];
+        $ticketCommentsToDisplay =  $ticketCommentsToDisplay . "<p>" . date('d-m-Y à H:i', strtotime(htmlentities($comment["comment_date"]))) . " (" . htmlentities($comment['firstname']) . ' ' . htmlentities($comment['lastname']) . ")" .  " : " . htmlentities($comment['comment_content']);
     }
 }
 
@@ -50,34 +50,44 @@ if ($allTicketComments === false) {
 $allCategories = getAllCategories();
 
 //_DELETE QUERY 
-if(isset($_POST['deleteTicketNumber'])){
+if (isset($_POST['deleteTicketNumber'])) {
     $idTicketToDelete = htmlentities($_POST['deleteTicketNumber']);
-    
+
     $deleteTicket = deleteTicket($idTicketToDelete);
     $deleteTicketComments = deleteTicketComments($idTicketToDelete);
-    header("location:tickets");
+    header("location:tickets", true);
 }
 
 
 //_UPDATE QUERY
-if(isset($_POST['ticketStatut'])){
-    $isOpen = $_POST['ticketStatut'];
-    $categoryTicket = $_POST['ticketCategory'];
-    $ticketNumber = $_POST["ticketNumber"];
+if (isset($_POST['ticketStatut'])) {
+    $isOpen = htmlentities($_POST['ticketStatut']);
+    $categoryTicket = htmlentities($_POST['ticketCategory']);
+    $ticketNumber = htmlentities($_POST["ticketNumber"]);
 
-    $updateTicket = setUpdateTicket($isOpen, $categoryTicket,$ticketNumber);
+    $updateTicket = setUpdateTicket($isOpen, $categoryTicket, $ticketNumber);
 
     header("location:$ticketNumber");
-
 }
 //_____ADD COMMENT
+$errorCommentMessage = "";
 
 if (isset($_POST["comment"])) {
-    $newComment = $_POST["comment"];
-    $ticketID = $_POST["ticketNumber"];
+    $newComment = htmlentities($_POST["comment"]);
+    $ticketID = htmlentities($_POST["ticketNumber"]);
 
-    $addNewComment =  insertNewTicketComment($ticketID, $_SESSION["idUser"], $newComment);
-    header("location:$ticketID");
+    if (empty($newComment)) {
+        $errorCommentMessage .= '<p class="errorMessage">Veuillez renseigner le champ commentaire.</p>';
+    }
+
+    if (empty($ticketID)) {
+        $errorCommentMessage .= '<p class="errorMessage">Veuillez renseigner le champ commentaire.</p>';
+    }
+
+    if ($errorCommentMessage === "") {
+        $addNewComment =  insertNewTicketComment($ticketID, $_SESSION["idUser"], $newComment);
+        header("location:$ticketID");
+    }
 }
 
 //__________CALL THE VIEW

@@ -22,11 +22,12 @@ require_once($path);
 
 <form action="" method="post">
     <label class="labelForm" for="object">Objet du ticket</label>
-    <input class="inputForm" type="text" id="object" name="object" required/>
+    <input class="inputForm" type="text" id="object" name="object" placeholder="Veuillez renseigner l'objet du ticket" required/>
 
     <label class="labelForm" for="description">Description du ticket</label>
-    <textarea class="inputForm textareaForm" name="description" id="description" cols="30" rows="10" required></textarea>
+    <textarea class="inputForm textareaForm" name="description" id="description" cols="30" rows="10" placeholder="Veuillez renseigner la description du ticket" required></textarea>
 
+    <?= $errorMessage ?>
     <button class="btnGeneral2 successButton" type="submit">Créer</button>
 </form>
 

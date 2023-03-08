@@ -33,9 +33,18 @@ foreach($tenantNames as $name){
     $displayTenantNames[] =  $name["tenant_name"];
 }
 
+$errorMessageNewTenant = "";
+
 if(isset($_POST["tenantName"])){
-    $insetTenant = insertNewTenant(htmlentities($_POST["tenantName"]));
-    header("location:tenants");
+    if(empty($_POST["tenantName"])){
+        $errorMessageNewTenant = '<p class="errorMessage">Veuillez renseigner le champ description.</p>';
+    }
+
+    if($errorMessageNewTenant === ""){
+        $insetTenant = insertNewTenant(htmlentities($_POST["tenantName"]));
+        header("location:tenants");
+    }
+
 }
 
 //__________CALL THE VIEW

@@ -17,27 +17,38 @@ if(!isset($_SESSION["connecter"])){
     exit();
 }
 
+//____BASIC INFORMATIONS PAGE DISPLAY
 $titlePage = "Création de ticket";
-
 $isActiveDashboard = '';
 $isActiveTickets = 'class="active"';
 $isActiveSocieties = '';
 $isActiveAccounts = '';
 
-$errorConnexionMessage = "";
+//_____QUERY INSERT NEW TICKET
+$errorMessage = "";
 
 if(isset($_POST['object']) && isset($_POST['description'])){
-    $titleTicket = htmlspecialchars($_POST['object']);
-    $descriptionTicket = htmlspecialchars($_POST['description']);
-    $userId = $_SESSION["idUser"];
-    $userId = getUserTenant($_SESSION["idUser"])["user_society"];
+    $titleTicket = htmlentities($_POST['object']);
+    $descriptionTicket = htmlentities($_POST['description']);
 
-    $insertNewTicket = insertNewTicket($titleTicket,$descriptionTicket,1,1);
+    if(empty($titleTicket)){
+        $errorMessage .= '<p class="errorMessage">Veuillez renseigner le champ objet.</p>';
+    }
+    
+    if(empty($descriptionTicket)){
+        $errorMessage .= '<p class="errorMessage">Veuillez renseigner le champ description.</p>';
+    }
 
-    header("location:tickets");
+    if($errorMessage === ""){
+        $userId = $_SESSION["idUser"];
+        $userSociety = getUserTenant($_SESSION["idUser"])["user_society"];
+    
+        $insertNewTicket = insertNewTicket($titleTicket,$descriptionTicket,$userId,$userSociety);
+    
+        header("location:tickets");
+    }
 
 }
-
 
 
 

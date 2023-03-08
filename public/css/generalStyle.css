@@ -7,11 +7,11 @@
 .hideElement {
     display:none;
 }
-
+/*
 .showElement {
     display:block;
 }
-
+*/
 .errorMessage {
     font-weight: bold;
     color: red;

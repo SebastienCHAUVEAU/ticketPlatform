@@ -2,15 +2,17 @@
 /*
 
 tickets : modifier mise en forme, retour sur tickets?, masquer fermés
-ticket details : encodage des caractères
 
-Suppression ticket
+Transactions : rechercher le pq / justification 
+Connexion dans toutes les pages : importer ou namespace 
+accessibilité notamment image 
+Faire apparaître foreign keys 
+id / table_id / fk_atable_btable
+
 ROUTAGE DOUBLE ...
 ENCODAGE TABLE : commentaires ; catégories
 RESPONSIVE
 
-
-PHONE NUMBER EN STRING CAR RETIRE LE ZERO OU TEL
 VERIFICATION SI CHAMPS VIDES
 GESTION DES ERREURS
 CHECK SUR L'ID DELETE AVEC UN SELECT : bon user, bon ticket
@@ -21,13 +23,10 @@ TOAST NOTIFICATION ??
 
 
 //__________SIMPLE ROUTER FOR OUR PAGES
-///session_start();
+
 $explodedUrl = explode('/', $_SERVER['REQUEST_URI']);
-/*
-echo "<pre>";
-var_dump($explodedUrl);
-echo "</pre>";
-*/
+
+
 //_____HOME AND DEFAULT
 
 if ($explodedUrl[1] == '' || $explodedUrl[1] == 'login') {
@@ -58,7 +57,7 @@ if ($explodedUrl[1] == '' || $explodedUrl[1] == 'login') {
         }
         require_once($path);
     } else if (isset($explodedUrl[2])) {
-        $idTicket = htmlspecialchars($explodedUrl[2]);
+        $idTicket = htmlentities($explodedUrl[2]);
         if (DIRECTORY_SEPARATOR === '/') {
             $path = dirname(__FILE__) . "/controllers/c_ticketDetails.php";
         } else {

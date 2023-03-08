@@ -28,7 +28,7 @@ require_once($path);
     <input class="inputForm" type="text" id="userlastname" name="userlastname" placeholder="Veuillez entrer le nom" required>
 
     <label class="labelForm" for="useremail">Adresse email</label>
-    <input class="inputForm" type="text" id="useremail" name="useremail" placeholder="Veuillez entrer l'adresse email" required >
+    <input class="inputForm" type="email" id="useremail" name="useremail" placeholder="Veuillez entrer l'adresse email" required >
 
     <label class="labelForm" for="userphone">Numéro de téléphone</label>
     <input class="inputForm" type="text" pattern="[0-9]*" id="userphone" name="userphone" placeholder="Veuillez entrer le numéro de téléphone" required>
@@ -51,6 +51,8 @@ require_once($path);
         ?>
     </select>
 
+    <?= $errorMessageUserCreation ?>
+    
     <button type="submit" class="btnGeneral2 successButton">Créer</button>
 
 </form>

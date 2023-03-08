@@ -35,11 +35,11 @@ require_once($path);
 
 
 <h2>Détails</h2>
-<p>Auteur : <?= htmlspecialchars($allTicketDetails["firstname"]) . ' ' . htmlspecialchars($allTicketDetails["lastname"]) ?></p>
-<p>Société : <?= htmlspecialchars($allTicketDetails["tenantname"]) ?></p>
-<p>Créé le : <?= htmlspecialchars(date('d-m-Y', strtotime($allTicketDetails["ticket_openDate"]))) ?></p>
-<p>Objet : <?= htmlspecialchars($allTicketDetails["ticket_title"]) ?></p>
-<p>Description : <?= htmlspecialchars($allTicketDetails["ticket_content"]) ?></p>
+<p>Auteur : <?= htmlentities($allTicketDetails["firstname"]) . ' ' . htmlentities($allTicketDetails["lastname"]) ?></p>
+<p>Société : <?= htmlentities($allTicketDetails["tenantname"]) ?></p>
+<p>Créé le : <?= htmlentities(date('d-m-Y', strtotime($allTicketDetails["ticket_openDate"]))) ?></p>
+<p>Objet : <?= htmlentities($allTicketDetails["ticket_title"]) ?></p>
+<p>Description : <?= htmlentities($allTicketDetails["ticket_content"]) ?></p>
 
 <h2>Modification</h2>
 <form action="" method="post">
@@ -62,7 +62,7 @@ require_once($path);
                 $isSelectedCategoryOption = "selected";
             }
             echo "<option $isSelectedCategoryOption value=";
-            echo  $category["category_id"] . '>' . $category["category_name"];
+            echo  htmlentities($category["category_id"]) . '>' . htmlentities($category["category_name"]);
             echo "</option>";
         }
 
@@ -80,8 +80,11 @@ require_once($path);
 
 <form action="" method="post">
     <label class="labelForm" for="comment">Ajouter un nouveau commentaire</label>
-    <input class="inputForm" type="text" id="comment" name="comment" />
+    <input class="inputForm" type="text" id="comment" name="comment" required/>
     <input name="ticketNumber" type="hidden" value="<?= $idTicket ?>" />
+
+    <?= $errorCommentMessage ?>
+
     <button type="submit" class="btnGeneral2 successButton">Ajouter</button>
 </form>
 

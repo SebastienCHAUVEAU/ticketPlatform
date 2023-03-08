@@ -22,8 +22,11 @@ require_once($path);
 <h2>Ajouter une nouvelle société</h2>
 <form action="" method="post">
     <label class="labelForm" for="tenantName">Nom de la société à ajouter</label>
-    <input class="inputForm" type="text" id="tenantName" name="tenantName" />
-    <button type="s ubmit" class="btnGeneral2 successButton">Ajouter</button>
+    <input class="inputForm" type="text" id="tenantName" name="tenantName" required/>
+
+    <?= $errorMessageNewTenant ?>
+
+    <button type="submit" class="btnGeneral2 successButton">Ajouter</button>
 </form>
 
 <h2>Liste</h2>
