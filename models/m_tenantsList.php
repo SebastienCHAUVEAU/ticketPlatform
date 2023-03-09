@@ -1,15 +1,18 @@
 <?php
+//__________CALL THE MODEL PDO CONNEXION
+if (DIRECTORY_SEPARATOR === '/') {
+    $path = dirname(dirname(__FILE__)) . "/models/m_databaseConnexion.php";
+} else {
+    $path = dirname(dirname(__FILE__)) . "\\models\\m_databaseConnexion.php";
+}
+require_once($path);
+
+
 function getAllTenantNames()
 {
-    $servername  = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "u206479934_gestiontickets";
+    $conn = pdoConnexion();
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction();
 
         $stmt = $conn->prepare("SELECT tenant_name FROM tenants;");
         $stmt->execute();
@@ -28,21 +31,13 @@ function getAllTenantNames()
 
 function insertNewTenant($name)
 {
-    $servername  = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "u206479934_gestiontickets";
+    $conn = pdoConnexion();
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction();
-
         $stmt = $conn->prepare("INSERT INTO tenants (tenant_name) VALUES (:name)");
         $stmt->execute(["name" => $name]);
 
         $insertedIdToReturn = $conn->lastInsertId();
-        $conn->commit();
 
         return $insertedIdToReturn;
         return true;

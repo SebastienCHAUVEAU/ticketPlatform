@@ -105,6 +105,7 @@ if (isset($_POST['userfirstname'])) {
 
 
     if ($errorMessageUpdateAccount === "") {
+        
         if ($user_password === "") {
             $updateUser = setUpdateAccountWithoutPassword($user_firstname, $user_lastname, $user_email, $user_phone, $user_admin, $user_society, $user_key);
             header("location:accounts");

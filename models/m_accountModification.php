@@ -1,16 +1,17 @@
 <?php
+//__________CALL THE MODEL PDO CONNEXION
+if (DIRECTORY_SEPARATOR === '/') {
+    $path = dirname(dirname(__FILE__)) . "/models/m_databaseConnexion.php";
+} else {
+    $path = dirname(dirname(__FILE__)) . "\\models\\m_databaseConnexion.php";
+}
+require_once($path);
+
 
 function getUserModifAllInfos($id){
-    $servername  = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "u206479934_gestiontickets";
+    $conn = pdoConnexion();
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction();
-
         $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = :id;");
         $stmt->execute(["id" => $id]);
 
@@ -30,24 +31,16 @@ function getUserModifAllInfos($id){
 
 function setUpdateAccountWithoutPassword($firstname, $lastname,$email,$phone,$isAdmin,$society,$id)
 {
-    $servername  = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "u206479934_gestiontickets";
+    $conn = pdoConnexion();
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction();
-
         $stmt = $conn->prepare("UPDATE users SET user_firstname=:firstname, user_lastname=:lastname, user_email=:email, user_phone_number=:phone, user_isAdmin=:isAdmin, user_society=:society WHERE user_id = :id");
         $stmt->execute(["firstname" => $firstname, "lastname" => $lastname,  "email" => $email, "phone" => $phone, "isAdmin" => $isAdmin, "society" => $society, "id" => $id]);
 
         $insertedIdToReturn = $conn->lastInsertId();
-        $conn->commit();
 
         return $insertedIdToReturn;
-        return true;
+
     } catch (PDOException $e) {
         $conn->rollback();
         $errorToDisplay = "Error " . $e->getMessage();
@@ -60,24 +53,17 @@ function setUpdateAccountWithoutPassword($firstname, $lastname,$email,$phone,$is
 
 function setUpdateAccountWithPassword($firstname, $lastname,$email,$phone,$isAdmin,$society,$id,$passwordUser)
 {
-    $servername  = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "u206479934_gestiontickets";
+    $conn = pdoConnexion();
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction();
 
         $stmt = $conn->prepare("UPDATE users SET user_firstname=:firstname, user_lastname=:lastname, user_email=:email, user_phone_number=:phone, user_isAdmin=:isAdmin, user_society=:society, user_password=:userpassword WHERE user_id = :id");
         $stmt->execute(["firstname" => $firstname, "lastname" => $lastname,  "email" => $email, "phone" => $phone, "isAdmin" => $isAdmin, "society" => $society, "userpassword" => $passwordUser, "id" => $id]);
 
         $insertedIdToReturn = $conn->lastInsertId();
-        $conn->commit();
 
         return $insertedIdToReturn;
-        return true;
+        
     } catch (PDOException $e) {
         $conn->rollback();
         $errorToDisplay = "Error " . $e->getMessage();

@@ -1,16 +1,17 @@
 <?php
-
+//__________CALL THE MODEL PDO CONNEXION
+if (DIRECTORY_SEPARATOR === '/') {
+    $path = dirname(dirname(__FILE__)) . "/models/m_databaseConnexion.php";
+} else {
+    $path = dirname(dirname(__FILE__)) . "\\models\\m_databaseConnexion.php";
+}
+require_once($path);
 
 
 function getTotalOpenedTickets(){
-    $servername  = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "u206479934_gestiontickets";
+    $conn = pdoConnexion();
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("SELECT COUNT(ticket_id) FROM tickets WHERE ticket_isActive=1");
         $stmt->execute();
@@ -31,14 +32,9 @@ function getTotalOpenedTickets(){
 
 
 function getNamesConnectedUSer($id){
-    $servername  = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "u206479934_gestiontickets";
+  $conn = pdoConnexion();
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("SELECT user_firstname, user_lastname FROM users WHERE user_id = :id;");
         $stmt->execute(['id' => $id]);

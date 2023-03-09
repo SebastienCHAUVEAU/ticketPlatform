@@ -1,34 +1,24 @@
 <?php
-
-function pdoConnexionTicket(){
-    $servername  = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "u206479934_gestiontickets";
-
-    try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $conn;
-
-    }catch(PDOException $e){
-        $conn->rollback();
-        $errorToDisplay = "Error " . $e->getMessage();
-        //echo $errorToDisplay;
-        return false;
-    };
-
+if (DIRECTORY_SEPARATOR === '/') {
+    $path = dirname(dirname(__FILE__)) . "/models/m_databaseConnexion.php";
+} else {
+    $path = dirname(dirname(__FILE__)) . "\\models\\m_databaseConnexion.php";
 }
+require_once($path);
 
 
 function insertNewTicket($title, $content, $author, $tenant)
 {
-    $conn = pdoConnexionTicket();
+    $conn = pdoConnexion();
 
     try {
+        $conn->beginTransaction();
+        $stmt = $conn->prepare("INSERT INTO tickets (ticket_title,ticket_content,ticket_author,ticket_tenant) 
+                                VALUES (:title,:content,:author,:tenant)");
 
-        $stmt = $conn->prepare("INSERT INTO tickets (ticket_title,ticket_content,ticket_author,ticket_tenant) VALUES (:title,:content,:author,:tenant)");
         $stmt->execute(["title" => $title, "content" => $content, "author" => $author, "tenant" => $tenant]);
+
+        $conn->commit();
 
         $insertedIdToReturn = $conn->lastInsertId();
 
@@ -47,7 +37,7 @@ function insertNewTicket($title, $content, $author, $tenant)
 
 function getUserTenant($idUser)
 {
-    $conn = pdoConnexionTicket();
+    $conn = pdoConnexion();
 
     try {
 
