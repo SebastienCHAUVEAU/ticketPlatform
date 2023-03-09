@@ -16,6 +16,7 @@ if(!isset($_SESSION["connecter"])){
     header("location:login");
     exit();
 }
+
 $titlePage = "Liste des sociétés";
 
 $isActiveDashboard = '';

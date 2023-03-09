@@ -44,7 +44,7 @@ if (usernameField !== null && passwordField !== null && buttonConnexion !== null
 /***** DELETE USER PART */
 const deleteFirstBtn = document.getElementById("deleteUserFirstButton");
 const divDeleteUser = document.getElementById("deleteUSerContainer");
-const returnDeleteUserButton = document.getElementById("deleteUserReturnButton");
+const deleteUserReturnButton = document.getElementById("deleteUserReturnButton");
 
 if(deleteFirstBtn !== null){
     deleteFirstBtn.addEventListener("click",function(e){
@@ -52,7 +52,7 @@ if(deleteFirstBtn !== null){
         divDeleteUser.classList.remove("hideElement");
     });
 
-    returnDeleteUserButton.addEventListener("click",function(e){
+    deleteUserReturnButton.addEventListener("click",function(e){
         deleteFirstBtn.classList.remove("hideElement");
         divDeleteUser.classList.add("hideElement");
     })

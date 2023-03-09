@@ -83,11 +83,9 @@ function setUpdateTicket($isOpen, $category,$ticketID)
         $stmt = $conn->prepare("UPDATE tickets SET ticket_isActive = :isActive, ticket_category = :category WHERE ticket_id = :ticketID");
         $stmt->execute(["isActive" => $isOpen, "category" => $category, "ticketID" => $ticketID]);
 
-        $insertedIdToReturn = $conn->lastInsertId();
-        return $insertedIdToReturn;
+        return true;
 
     } catch (PDOException $e) {
-        $conn->rollback();
         $errorToDisplay = "Error " . $e->getMessage();
         //echo $errorToDisplay;
         return false;
@@ -95,6 +93,7 @@ function setUpdateTicket($isOpen, $category,$ticketID)
 
     $conn = null;
 }
+
 
 function insertNewTicketComment($ticketId, $authorId, $commentContent)
 {
@@ -126,11 +125,13 @@ function deleteTicket($idTicket)
     $conn = pdoConnexion();
 
     try {
-
+        $conn->beginTransaction();
         $stmt = $conn->prepare("DELETE FROM tickets WHERE ticket_id=:id");
         $stmt->execute(["id" => $idTicket]);
 
+        $conn->commit();
         return true;
+
     } catch (PDOException $e) {
         $conn->rollback();
         $errorToDisplay = "Error " . $e->getMessage();
