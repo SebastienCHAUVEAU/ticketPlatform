@@ -70,7 +70,6 @@ require_once($path);
     </select>
 
     <input name="ticketNumber" type="hidden" value="<?= $idTicket ?>" />
-
     <button type="submit" class="btnGeneral2 successButton">Modifier</button>
 </form>
 
