@@ -38,8 +38,8 @@ require_once($path);
 <p>Auteur : <?= htmlentities($allTicketDetails["firstname"]) . ' ' . htmlentities($allTicketDetails["lastname"]) ?></p>
 <p>Société : <?= htmlentities($allTicketDetails["tenantname"]) ?></p>
 <p>Créé le : <?= htmlentities(date('d-m-Y', strtotime($allTicketDetails["ticket_openDate"]))) ?></p>
-<p>Objet : <?= htmlentities($allTicketDetails["ticket_title"]) ?></p>
-<p>Description : <?= htmlentities($allTicketDetails["ticket_content"]) ?></p>
+<p>Objet : <?= $allTicketDetails["ticket_title"] ?></p>
+<p>Description : <?= $allTicketDetails["ticket_content"] ?></p>
 
 <h2>Modification</h2>
 <form action="" method="post">

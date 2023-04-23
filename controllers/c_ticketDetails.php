@@ -41,7 +41,7 @@ if ($allTicketComments === false) {
 } else {
     $ticketCommentsToDisplay = "";
     foreach ($allTicketComments as $comment) {
-        $ticketCommentsToDisplay =  $ticketCommentsToDisplay . "<p>" . date('d-m-Y à H:i', strtotime(htmlentities($comment["comment_date"]))) . " (" . htmlentities($comment['firstname']) . ' ' . htmlentities($comment['lastname']) . ")" .  " : " . htmlentities($comment['comment_content']);
+        $ticketCommentsToDisplay =  $ticketCommentsToDisplay . "<p>" . date('d-m-Y à H:i', strtotime($comment["comment_date"])) . " (" . $comment['firstname'] . ' ' . $comment['lastname'] . ")" .  " : " . $comment['comment_content'];
     }
 }
 
@@ -55,7 +55,7 @@ if (isset($_POST['deleteTicketNumber'])) {
 
     $deleteTicket = deleteTicket($idTicketToDelete);
     $deleteTicketComments = deleteTicketComments($idTicketToDelete);
-    header("location:tickets", true);
+    header("location:/tickets", true);
 }
 
 
@@ -73,7 +73,7 @@ if (isset($_POST['ticketStatut'])) {
 $errorCommentMessage = "";
 
 if (isset($_POST["comment"])) {
-    $newComment = htmlentities($_POST["comment"]);
+    $newComment = htmlentities($_POST["comment"],ENT_QUOTES,'UTF-8');
     $ticketID = htmlentities($_POST["ticketNumber"]);
 
     if (empty($newComment)) {

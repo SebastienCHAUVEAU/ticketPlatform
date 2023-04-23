@@ -10,7 +10,7 @@ class PdoConnexion {
 	public function connexion(){
 		try
 		{
-	        $bdd = new PDO('mysql:host=' . $this->host . ';dbname='. $this->db .';charset=utf8mb4', $this->login,$this->pass);
+	        $bdd = new PDO('mysql:host=' . $this->host . ';dbname='. $this->db, $this->login,$this->pass);  
 			$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			return $bdd;
 
