@@ -17,7 +17,7 @@ if(!isset($_SESSION["connecter"])){
     exit();
 }
 
-$titlePage = "Liste des sociétés";
+$titlePage = "Sociétés";
 
 $isActiveDashboard = '';
 $isActiveTickets = '';

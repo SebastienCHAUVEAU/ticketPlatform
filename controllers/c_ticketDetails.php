@@ -18,7 +18,7 @@ if (!isset($_SESSION["connecter"])) {
 }
 
 //_____PAGE AND NAV
-$titlePage = "Détail du ticket";
+$titlePage = "Détails du ticket";
 
 $isActiveDashboard = '';
 $isActiveTickets = 'class="active"';
@@ -73,7 +73,7 @@ if (isset($_POST['ticketStatut'])) {
 $errorCommentMessage = "";
 
 if (isset($_POST["comment"])) {
-    $newComment = htmlentities($_POST["comment"],ENT_QUOTES,'UTF-8');
+    $newComment = htmlentities($_POST["comment"]);
     $ticketID = htmlentities($_POST["ticketNumber"]);
 
     if (empty($newComment)) {
