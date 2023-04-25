@@ -195,3 +195,31 @@ $dangerHover: #da190b;
   .responsiveTable {
     overflow-x:auto;
   }
+
+  //Footer part (maintain on the bottom)
+  #page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  #content-wrap {
+    padding-bottom: 5rem; 
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;   
+    text-align: center;
+    border-top-style: solid;
+
+        p {
+            margin:0;
+            padding:0;
+        }
+    
+
+  }
+
+
