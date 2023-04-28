@@ -19,6 +19,7 @@ if (!isset($_SESSION["connecter"])) {
 
 //_____PAGE AND NAV
 $titlePage = "Détails du ticket";
+$pageDescription = "Détail du ticket sélectionné.";
 
 $isActiveDashboard = '';
 $isActiveTickets = 'class="active"';

@@ -44,3 +44,4 @@ function pdoConnexion()
         return false;
     };
 }
+

@@ -18,6 +18,7 @@ if(!isset($_SESSION["connecter"])){
 }
 
 $titlePage = "Comptes";
+$pageDescription = "List of all the user accounts";
 
 $isActiveDashboard = '';
 $isActiveTickets = '';

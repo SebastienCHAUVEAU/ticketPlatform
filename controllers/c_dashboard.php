@@ -18,6 +18,7 @@ if(!isset($_SESSION["connecter"])){
 }
 
 $titlePage = "Dashboard";
+$pageDescription = "Dashboard page about the tickets.";
 
 $isActiveDashboard = 'class="active"';
 $isActiveTickets = '';

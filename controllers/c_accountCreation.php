@@ -18,6 +18,7 @@ if (!isset($_SESSION["connecter"])) {
 }
 
 $titlePage = "Création de compte";
+$pageDescription = "Creation account page.";
 
 $isActiveDashboard = '';
 $isActiveTickets = '';

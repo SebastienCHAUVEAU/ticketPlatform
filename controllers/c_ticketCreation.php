@@ -19,6 +19,8 @@ if(!isset($_SESSION["connecter"])){
 
 //____BASIC INFORMATIONS PAGE DISPLAY
 $titlePage = "Création de ticket";
+$pageDescription = "New ticket creation page";
+
 $isActiveDashboard = '';
 $isActiveTickets = 'class="active"';
 $isActiveSocieties = '';

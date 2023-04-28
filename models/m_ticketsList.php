@@ -1,11 +1,6 @@
 <?php
 //__________CALL THE MODEL PDO CONNEXION
-if (DIRECTORY_SEPARATOR === '/') {
-    $path = dirname(dirname(__FILE__)) . "/models/m_databaseConnexion.php";
-} else {
-    $path = dirname(dirname(__FILE__)) . "\\models\\m_databaseConnexion.php";
-}
-require_once($path);
+requirePageOnAllSystem("models","m_databaseConnexion");
 
 
 

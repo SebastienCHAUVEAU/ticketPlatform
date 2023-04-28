@@ -14,6 +14,9 @@ $dangerFont:#f44336;
 $dangerBackground: #f44336;
 $dangerHover: #da190b;
 
+$footerNavBgColor:#333;
+$whiteText:#f2f2f2;
+
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
 
 /****************General*/
@@ -34,13 +37,13 @@ $dangerHover: #da190b;
 /****************Navigation specific***/
 /* Background color NAV */
 .topnav {
-    background-color: #333;
+    background-color: $footerNavBgColor;
     overflow: hidden;
 
     /* Links NAV */
     a {
         float: left;
-        color: #f2f2f2;
+        color: $whiteText;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
@@ -77,14 +80,16 @@ $dangerHover: #da190b;
       }
   }
 
+
+
   
 
 
   @media only screen and (max-width: 768px) {
     
     .topnav {
-      display:flex;
-      flex-direction: column;
+        display:flex;
+        flex-direction: column;
     }
   }
   
@@ -115,7 +120,7 @@ $dangerHover: #da190b;
 
 .btnGeneral {
     width: 100%;
-    color: white;
+    color: $whiteText;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -125,7 +130,7 @@ $dangerHover: #da190b;
 
 .btnGeneral2 {
     
-    color: white;
+    color: $whiteText;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -181,11 +186,11 @@ $dangerHover: #da190b;
         padding-bottom: 12px;
         text-align: left;
         background-color: $mainColor;
-        color: white;
+        color: $whiteText;
     }
 
     tr{
-        &:nth-child(even){background-color: #f2f2f2;}
+        &:nth-child(even){background-color: lightgray;}
         &:hover {background-color: #ddd;}
     }
 
@@ -208,6 +213,8 @@ $dangerHover: #da190b;
 
   footer {
     position: absolute;
+    background-color: $footerNavBgColor;
+    color:$whiteText;
     bottom: 0;
     width: 100%;
     height: 2.5rem;   

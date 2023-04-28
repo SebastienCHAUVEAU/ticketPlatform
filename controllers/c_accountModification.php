@@ -28,6 +28,7 @@ if (!isset($_SESSION["connecter"])) {
 }
 
 $titlePage = "Modification d'un compte";
+$pageDescription = "Account modification page";
 
 $isActiveDashboard = '';
 $isActiveTickets = '';

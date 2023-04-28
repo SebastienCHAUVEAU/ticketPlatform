@@ -18,6 +18,7 @@ if(!isset($_SESSION["connecter"])){
 }
 
 $titlePage = "Sociétés";
+$pageDescription = "List of all the created Tenants";
 
 $isActiveDashboard = '';
 $isActiveTickets = '';
