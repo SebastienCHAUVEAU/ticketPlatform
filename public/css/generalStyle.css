@@ -41,6 +41,25 @@
   color: white;
 }
 
+.burger_list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.burger_list:hover {
+  cursor: pointer;
+}
+
+#title_nav_bar {
+  margin: 15 auto;
+}
+
+#nav_icon_bar {
+  display: none;
+  color: #f2f2f2;
+  margin-left: 10px;
+}
+
 #logoutLink {
   float: right;
   color: #f2f2f2;
@@ -55,30 +74,46 @@
 }
 
 /****************Responsive specific***/
-.row {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.row::after {
-  clear: both;
-  display: table;
-  box-sizing: border-box;
-}
-
 @media only screen and (max-width: 768px) {
   .topnav {
     display: flex;
     flex-direction: column;
   }
+  .topnav_list {
+    display: none;
+    flex-direction: column;
+  }
+  #nav_icon_bar {
+    display: flex;
+    color: #f2f2f2;
+  }
+  #title_nav_bar {
+    display: flex;
+    color: #f2f2f2;
+    margin-top: 15px;
+  }
   [class*=col-] {
     width: 100%;
   }
-  .col-xs {
-    width: 100%;
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .row::after {
+    clear: both;
+    box-sizing: border-box;
   }
 }
 @media only screen and (min-width: 768px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .row::after {
+    clear: both;
+    box-sizing: border-box;
+  }
   .col-1 {
     width: 8.33%;
   }

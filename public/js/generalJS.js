@@ -60,3 +60,21 @@ if(deleteFirstBtn !== null){
 
 }
 
+
+
+/******* RESPONSIVE NAV PART */
+const navResponsiveButton = document.querySelector(".burger_list");
+const topNavList = document.querySelector(".topnav_list");
+
+let isOpenNav = 0;
+
+navResponsiveButton.addEventListener("click",function(e){
+    if(isOpenNav === 0){
+        topNavList.style.display="flex";
+        isOpenNav = 1;
+    }else{
+        topNavList.style.display="none";
+        isOpenNav = 0;
+    }
+    
+});

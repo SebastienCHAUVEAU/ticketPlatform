@@ -21,47 +21,75 @@ require_once($path);
 <h1>Modification d'un compte</h1>
 
 <form action="" method="post">
-<label class="labelForm" for="userfirstname">Prénom</label>
-    <input class="inputForm" type="text" id="userfirstname" name="userfirstname" value="<?=$infosUser[0]["user_firstname"]?>" required>
 
-    <label class="labelForm" for="userlastname">Nom</label>
-    <input class="inputForm" type="text" id="userlastname" name="userlastname" value="<?=$infosUser[0]["user_lastname"]?>" required>
+    <div class="row">
+        <div class="col-6">
+            <label class="labelForm" for="userfirstname">Prénom</label>
+            <input class="inputForm" type="text" id="userfirstname" name="userfirstname" value="<?= $infosUser[0]["user_firstname"] ?>" required>
+        </div>
 
-    <label class="labelForm" for="useremail">Adresse email</label>
-    <input class="inputForm" type="text" id="useremail" name="useremail" value="<?=$infosUser[0]["user_email"]?>" required >
+        <div class="col-5">
+            <label class="labelForm" for="userlastname">Nom</label>
+            <input class="inputForm" type="text" id="userlastname" name="userlastname" value="<?= $infosUser[0]["user_lastname"] ?>" required>
+        </div>
 
-    <label class="labelForm" for="userphone">Numéro de téléphone</label>
-    <input class="inputForm" type="text" pattern="[0-9]*" id="userphone" name="userphone" value="<?=$infosUser[0]["user_phone_number"]?>" required>
+        <div class="col-6">
+            <label class="labelForm" for="useremail">Adresse email</label>
+            <input class="inputForm" type="text" id="useremail" name="useremail" value="<?= $infosUser[0]["user_email"] ?>" required>
+        </div>
 
-    <label class="labelForm" for="userpassword">Mot de passe</label>
-    <input class="inputForm" type="password" id="userpassword" name="userpassword" placeholder="Laissez vide pour ne pas modifier le mot de passe" value="">
+        <div class="col-5">
+            <label class="labelForm" for="userphone">Numéro de téléphone</label>
+            <input class="inputForm" type="text" pattern="[0-9]*" id="userphone" name="userphone" value="<?= $infosUser[0]["user_phone_number"] ?>" required>
+        </div>
 
-    <label class="labelForm" for="useradmin">Utilisateur administrateur</label>
-    <select class="inputForm" name="useradmin" id="useradmin">
-        <option value="1" <?php if($infosUser[0]["user_isAdmin"] === 1){ echo "selected";} ?> >Oui</option>
-        <option value="0" <?php if($infosUser[0]["user_isAdmin"] === 0){ echo "selected";} ?> >Non</option>
-    </select>
+        <div class="col-6">
 
-    <label class="labelForm" for="usersociety">Société</label>
-    <select class="inputForm" name="usersociety" id="usersociety">
-        <?php 
-            foreach ($userCreation_allTenants as $tenant) {
-                $isSelectedTenantOption = " ";
-                if ($tenant["tenant_id"] === $infosUser[0]["user_society"]) {
-                    $isSelectedTenantOption = "selected";
+            <label class="labelForm" for="userpassword">Mot de passe</label>
+            <input class="inputForm" type="password" id="userpassword" name="userpassword" placeholder="Laissez vide pour ne pas modifier le mot de passe" value="">
+        </div>
+
+        <div class="col-5">
+            <label class="labelForm" for="useradmin">Utilisateur administrateur</label>
+            <select class="inputForm" name="useradmin" id="useradmin">
+                <option value="1" <?php if ($infosUser[0]["user_isAdmin"] === 1) {
+                                        echo "selected";
+                                    } ?>>Oui</option>
+                <option value="0" <?php if ($infosUser[0]["user_isAdmin"] === 0) {
+                                        echo "selected";
+                                    } ?>>Non</option>
+            </select>
+        </div>
+
+        <div class="col-6">
+            <label class="labelForm" for="usersociety">Société</label>
+            <select class="inputForm" name="usersociety" id="usersociety">
+                <?php
+                foreach ($userCreation_allTenants as $tenant) {
+                    $isSelectedTenantOption = " ";
+                    if ($tenant["tenant_id"] === $infosUser[0]["user_society"]) {
+                        $isSelectedTenantOption = "selected";
+                    }
+                    echo "<option $isSelectedTenantOption value=";
+                    echo  $tenant["tenant_id"] . '>' . $tenant["tenant_name"];
+                    echo "</option>";
                 }
-                echo "<option $isSelectedTenantOption value=";
-                echo  $tenant["tenant_id"] . '>' . $tenant["tenant_name"];
-                echo "</option>";
-            }
-    
-          
 
-        ?>
-    </select>
-    <input type="hidden" name="key" value="<?=$infosUser[0]['user_id']?>">
 
-    <button type="submit" class="btnGeneral2 successButton">Modifier</button>
+
+                ?>
+            </select>
+        </div>
+
+        <div class="col-12">
+
+            <input type="hidden" name="key" value="<?= $infosUser[0]['user_id'] ?>">
+
+            <button type="submit" class="btnGeneral2 successButton">Modifier</button>
+        </div>
+
+    </div>
+
 </form>
 
 

@@ -20,7 +20,7 @@ require_once($path);
 
 <h1>Sociétés clientes</h1>
 <div class="row">
-    <div class="col-6 col-xs">
+    <div class="col-6">
         <h2>Ajouter une nouvelle société</h2>
         <form action="" method="post">
             <label class="labelForm" for="tenantName">Nom de la société à ajouter</label>
@@ -32,7 +32,7 @@ require_once($path);
         </form>
     </div>
 
-    <div class="col-5 col-xs">
+    <div class="col-5">
         <h2>Liste</h2>
         <div class="responsiveTable">
             <table class="table col-12">

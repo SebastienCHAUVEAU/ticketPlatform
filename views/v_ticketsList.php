@@ -22,6 +22,8 @@ require_once($path);
 
 <a href="ticket_creation"><button class="btnGeneral2 successButton">Création d'un nouveau ticket</button></a>
 
+
+
 <h2>Tickets ouverts</h2>
 <div class="responsiveTable">
     <table class="table col-12">
@@ -57,6 +59,7 @@ require_once($path);
         </tbody>
     </table>
 </div>
+
 
 
 <h2>Tickets fermés</h2>
@@ -95,6 +98,10 @@ require_once($path);
         </tbody>
     </table>
 </div>
+
+
+
+
 
 
 <?php
