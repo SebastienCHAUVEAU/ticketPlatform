@@ -24,7 +24,7 @@ require_once($path);
 
 <h2>Liste des comptes</h2>
 <div class="responsiveTable">
-    <table class="table">
+    <table class="table col-12">
         <thead>
             <tr>
                 <th>Nom de l'utilisateur</th>

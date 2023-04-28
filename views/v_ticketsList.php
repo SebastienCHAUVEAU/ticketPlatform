@@ -24,7 +24,7 @@ require_once($path);
 
 <h2>Tickets ouverts</h2>
 <div class="responsiveTable">
-    <table class="table">
+    <table class="table col-12">
         <thead>
             <tr>
                 <th>Numéro</th>
@@ -62,7 +62,7 @@ require_once($path);
 <h2>Tickets fermés</h2>
 
 <div class="responsiveTable">
-    <table class="table">
+    <table class="table col-12">
         <thead>
             <tr>
                 <th>Numéro</th>

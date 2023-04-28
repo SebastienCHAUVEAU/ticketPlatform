@@ -20,18 +20,20 @@ require_once($path);
 
 <h1>Bienvenue <?= $userIdentity["user_firstname"] ?> <?= $userIdentity["user_lastname"] ?></h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre total de tickets ouverts</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><?= $totalCurrentOpenedTickets["COUNT(ticket_id)"] ?></td>
-        </tr>
-    </tbody>
-</table>
+<div class="row">
+    <table class="table col-6 col-xl-4">
+        <thead>
+            <tr>
+                <th>Nombre total de tickets ouverts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?= $totalCurrentOpenedTickets["COUNT(ticket_id)"] ?></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 
 <?php

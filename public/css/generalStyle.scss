@@ -10,12 +10,12 @@ $infoHover: #0b7dda;
 $warningBackground: #ff9800;
 $warningHover: #e68a00;
 
-$dangerFont:#f44336;
+$dangerFont: #f44336;
 $dangerBackground: #f44336;
 $dangerHover: #da190b;
 
-$footerNavBgColor:#333;
-$whiteText:#f2f2f2;
+$footerNavBgColor: #333;
+$whiteText: #f2f2f2;
 
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
 
@@ -26,7 +26,7 @@ $whiteText:#f2f2f2;
 }
 
 .hideElement {
-    display:none;
+    display: none;
 }
 
 .errorMessage {
@@ -55,7 +55,7 @@ $whiteText:#f2f2f2;
             background-color: #ddd;
             color: black;
         }
-        
+
         /* Active NAV */
         &.active {
             background-color: $mainColor;
@@ -63,10 +63,10 @@ $whiteText:#f2f2f2;
         }
 
     }
-  }
-  
+}
 
-  #logoutLink {
+
+#logoutLink {
     float: right;
     color: #f2f2f2;
     text-align: center;
@@ -74,25 +74,155 @@ $whiteText:#f2f2f2;
     text-decoration: none;
     font-size: 17px;
 
-    &:hover{
+    &:hover {
         background-color: #ddd;
         color: black;
-      }
-  }
+    }
+}
 
 
 
-  
+/****************Responsive specific***/
+
+.row{
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &::after {
+        clear:both;
+        display: table;
+        box-sizing: border-box;
+    }
+}
 
 
-  @media only screen and (max-width: 768px) {
-    
+
+
+//Smartphone screen display
+@media only screen and (max-width: 768px) {
+
     .topnav {
-        display:flex;
+        display: flex;
         flex-direction: column;
     }
-  }
-  
+
+    [class*="col-"] {
+        width: 100%;
+      }
+
+    .col-xs {
+        width: 100%;
+    }
+}
+
+
+//Desktop screen display
+@media only screen and (min-width: 768px) {
+
+    .col-1 {
+        width: 8.33%;
+    }
+    
+    .col-2 {
+        width: 16.66%;
+    }
+    
+    .col-3 {
+        width: 25%;
+    }
+    
+    .col-4 {
+        width: 33.33%;
+    }
+    
+    .col-5 {
+        width: 41.66%;
+    }
+    
+    .col-6 {
+        width: 50%;
+    }
+    
+    .col-7 {
+        width: 58.33%;
+    }
+    
+    .col-8 {
+        width: 66.66%;
+    }
+    
+    .col-9 {
+        width: 75%;
+    }
+    
+    .col-10 {
+        width: 83.33%;
+    }
+    
+    .col-11 {
+        width: 91.66%;
+    }
+    
+    .col-12 {
+        width: 100%;
+    }
+    
+}
+
+
+@media only screen and (min-width: 1200px) {
+    .col-xl-1 {
+        width: 8.33%;
+    }
+    
+    .col-xl-2 {
+        width: 16.66%;
+    }
+    
+    .col-xl-3 {
+        width: 25%;
+    }
+    
+    .col-xl-4 {
+        width: 33.33%;
+    }
+    
+    .col-xl-5 {
+        width: 41.66%;
+    }
+    
+    .col-xl-6 {
+        width: 50%;
+    }
+    
+    .col-xl-7 {
+        width: 58.33%;
+    }
+    
+    .col-xl-8 {
+        width: 66.66%;
+    }
+    
+    .col-xl-9 {
+        width: 75%;
+    }
+    
+    .col-xl-10 {
+        width: 83.33%;
+    }
+    
+    .col-xl-11 {
+        width: 91.66%;
+    }
+    
+    .col-xl-12 {
+        width: 100%;
+    }
+
+}
+
+
 /****************Form specific*/
 
 .labelForm {
@@ -129,7 +259,7 @@ $whiteText:#f2f2f2;
 }
 
 .btnGeneral2 {
-    
+
     color: $whiteText;
     padding: 14px 20px;
     margin: 8px 0;
@@ -160,7 +290,7 @@ $whiteText:#f2f2f2;
     &:hover {
         background: $warningHover;
     }
-} 
+}
 
 .dangerButton {
     background-color: $dangerBackground;
@@ -168,18 +298,18 @@ $whiteText:#f2f2f2;
     &:hover {
         background: $dangerHover;
     }
-} 
+}
 
 /********Table specific****/
 .table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
 
-    td, th {
+    td,
+    th {
         border: 1px solid #ddd;
         padding: 8px;
-      }
+    }
 
     th {
         padding-top: 12px;
@@ -189,44 +319,47 @@ $whiteText:#f2f2f2;
         color: $whiteText;
     }
 
-    tr{
-        &:nth-child(even){background-color: lightgray;}
-        &:hover {background-color: #ddd;}
+    tr {
+        &:nth-child(even) {
+            background-color: lightgray;
+        }
+
+        &:hover {
+            background-color: #ddd;
+        }
     }
 
-  }
+}
 
 
-  .responsiveTable {
-    overflow-x:auto;
-  }
+.responsiveTable {
+    overflow-x: auto;
+}
 
-  //Footer part (maintain on the bottom)
-  #page-container {
+//Footer part (maintain on the bottom)
+#page-container {
     position: relative;
     min-height: 100vh;
-  }
-  
-  #content-wrap {
-    padding-bottom: 5rem; 
-  }
+}
 
-  footer {
+#content-wrap {
+    padding-bottom: 5rem;
+}
+
+footer {
     position: absolute;
     background-color: $footerNavBgColor;
-    color:$whiteText;
+    color: $whiteText;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;   
+    height: 2.5rem;
     text-align: center;
     border-top-style: solid;
 
-        p {
-            margin:0;
-            padding:0;
-        }
-    
-
-  }
+    p {
+        margin: 0;
+        padding: 0;
+    }
 
 
+}
